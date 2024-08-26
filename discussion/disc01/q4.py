@@ -10,7 +10,15 @@ def unique_digits(n):
     2
     """
     
-    return len(set(str(n)))
+    unique = 0
+    while n > 0:
+        last = n % 10
+        n = n // 10
+        # Calls the has_digit() function if has digit return false counter + 1
+        if not has_digit(n, last):
+            unique += 1
+
+    return unique
 
 
 def has_digit(n, k):
