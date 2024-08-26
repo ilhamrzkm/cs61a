@@ -9,6 +9,9 @@ def unique_digits(n):
     >>> unique_digits(101)
     2
     """
+    
+    return len(set(str(n)))
+
 
 def has_digit(n, k):
     """
@@ -21,3 +24,13 @@ def has_digit(n, k):
     """
     assert k >= 0 and k < 10
     
+    counter = False
+    while n > 0:
+        if n % 10 == k:
+            counter = True
+            n = n // 10
+        else:
+            n = n // 10
+
+    
+    return counter
