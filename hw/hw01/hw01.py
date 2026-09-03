@@ -140,7 +140,13 @@ def largest_factor(n):
     >>> largest_factor(13) # factors are 1, 13
     1
     """
-    "*** YOUR CODE HERE ***"
+    i = 1
+    factor = 1
+    while i < n:
+        if n % i == 0:
+            factor = i
+        i += 1
+    return factor
 
 
 def accumulate(fuse, start, n, term):
@@ -162,7 +168,15 @@ def accumulate(fuse, start, n, term):
     >>> accumulate(lambda x, y: x + y + 1, 2, 3, square)
     19
     """
-    "*** YOUR CODE HERE ***"
+    i = 1
+    total = start
+    if n == 0:
+        return total
+    else:
+        while i <= n:
+          total = fuse(total, term(i))
+          i += 1
+    return total
 
 
 def summation_using_accumulate(n, term):
@@ -177,7 +191,7 @@ def summation_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(summation_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    return ____
+    return accumulate(add, 0, n, term)
 
 
 def product_using_accumulate(n, term):
@@ -192,4 +206,4 @@ def product_using_accumulate(n, term):
     >>> [type(x).__name__ for x in ast.parse(inspect.getsource(product_using_accumulate)).body[0].body]
     ['Expr', 'Return']
     """
-    return ____
+    return accumulate(mul, 1, n, term)
